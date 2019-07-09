@@ -1,0 +1,5 @@
+[Config]
+  maxINSERTS = 10
+  minINSERTS = 1
+  maxUPDATES = 10
+  minUPDATES = 1
