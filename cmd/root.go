@@ -16,6 +16,15 @@ type Config struct {
 	minINSERTS int
 	maxUPDATES int
 	minUPDATES int
+	dbConfig Database
+}
+
+type Database struct {
+	host string
+	port int
+	user string
+	pass string
+	name string
 }
 
 var cfg Config
@@ -66,6 +75,11 @@ func initConfig() {
 		cfg.minINSERTS = viper.GetInt("Config.minINSERTS")
 		cfg.maxUPDATES = viper.GetInt("Config.maxUPDATES")
 		cfg.minUPDATES = viper.GetInt("Config.minUPDATES")
+		cfg.dbConfig.host = viper.GetString("Database.Host")
+		cfg.dbConfig.port = viper.GetInt("Database.Port")
+		cfg.dbConfig.user = viper.GetString("Database.User")
+		cfg.dbConfig.pass = viper.GetString("Database.Password")
+		cfg.dbConfig.name = viper.GetString("Database.dbName")
 	} else {
 		fmt.Println("Config file not found, using default values")
 		cfg.maxINSERTS = 10
